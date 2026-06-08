@@ -1,0 +1,95 @@
+@prefix : <http://manipal.edu> .
+@prefix owl: <http://w3.org> .
+@prefix rdf: <http://w3.org> .
+@prefix xml: <http://w3.org> .
+@prefix xsd: <http://w3.org> .
+@prefix rdfs: <http://w3.org> .
+@base <http://manipal.edu> .
+
+<http://manipal.edu> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://manipal.eduis_template_for
+:is_template_for rdf:type owl:ObjectProperty ;
+                 rdfs:domain :DNA ;
+                 rdfs:range :RNA .
+
+###  http://manipal.edupairs_with
+:pairs_with rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+            rdfs:domain :NitrogenousBase ;
+            rdfs:range :NitrogenousBase .
+
+###  http://manipal.eduutilizes_neurotransmitter
+:utilizes_neurotransmitter rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Neuroreceptor ;
+                           rdfs:range :Protein .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://manipal.eduBiomolecule
+:Biomolecule rdf:type owl:Class .
+
+###  http://manipal.eduDNA
+:DNA rdf:type owl:Class ;
+     rdfs:subClassOf :NucleicAcid ;
+     owl:disjointWith :RNA .
+
+###  http://manipal.eduNeuroreceptor
+:Neuroreceptor rdf:type owl:Class ;
+               rdfs:subClassOf :Protein .
+
+###  http://manipal.eduNitrogenousBase
+:NitrogenousBase rdf:type owl:Class ;
+                 rdfs:subClassOf :Biomolecule ;
+                 owl:oneOf ( :Adenine :Thymine :Guanine :Cytosine :Uracil ) .
+
+###  http://manipal.eduNucleicAcid
+:NucleicAcid rdf:type owl:Class ;
+             rdfs:subClassOf :Biomolecule ;
+             owl:disjointWith :Protein .
+
+###  http://manipal.eduProtein
+:Protein rdf:type owl:Class ;
+         rdfs:subClassOf :Biomolecule .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://manipal.eduAdenine
+:Adenine rdf:type :NitrogenousBase ;
+         :pairs_with :Thymine .
+
+###  http://manipal.eduThymine
+:Thymine rdf:type :NitrogenousBase .
+
+###  http://manipal.eduGuanine
+:Guanine rdf:type :NitrogenousBase ;
+         :pairs_with :Cytosine .
+
+###  http://manipal.eduCytosine
+:Cytosine rdf:type :NitrogenousBase .
+
+###  http://manipal.eduUracil
+:Uracil rdf:type :NitrogenousBase .
+
+###  http://manipal.eduGenomic_DNA_Template
+:Genomic_DNA_Template rdf:type :DNA ;
+                      :is_template_for :Messenger_RNA_Transcript .
+
+###  http://manipal.eduMessenger_RNA_Transcript
+:Messenger_RNA_Transcript rdf:type :RNA .
+
+###  http://manipal.eduDopamine
+:Dopamine rdf:type :Protein .
+
+###  http://manipal.eduD1_Receptor
+:D1_Receptor rdf:type :Neuroreceptor ;
+             :utilizes_neurotransmitter :Dopamine .
