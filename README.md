@@ -1,4 +1,3 @@
-# mini-Neuro-Molecular-Ontology
 # Mini-Neuro Molecular Ontology
 
 A semantic web knowledge graph designed to translate standard Class XII Molecular Biology and Biotechnology frameworks into machine-readable logic structures (OWL/RDF). 
